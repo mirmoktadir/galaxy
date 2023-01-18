@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "316101125231",
+    "project_id": "galaxy-95dda",
+    "storage_bucket": "galaxy-95dda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316101125231:android:ac05a6a495bddd059e599a",
+        "android_client_info": {
+          "package_name": "com.example.galaxy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316101125231-vn2p78f7svqosol6ve0srqjs6890abnf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.galaxy",
+            "certificate_hash": "c10a270e4fe0387f656f43c167b2a53ee099d2a2"
+          }
+        },
+        {
+          "client_id": "316101125231-ku499dpj95jk4ep148kglg707ngfjo9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZWvNKpu9oyXlvOih9FgJ_dRGlcd06wuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316101125231-ku499dpj95jk4ep148kglg707ngfjo9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
