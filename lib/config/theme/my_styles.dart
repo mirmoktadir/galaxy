@@ -157,7 +157,7 @@ class MyStyles {
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6.r),
-              //side: BorderSide(color: Colors.teal, width: 2.0),
+              // side: BorderSide(color: Colors.black26, width: 2.0),
             ),
           ),
           elevation: MaterialStateProperty.all(0),
@@ -180,6 +180,25 @@ class MyStyles {
                   : DarkThemeColors.buttonColor; // Use the component's default.
             },
           ),
+        ),
+      );
+
+  //gradient elevated button theme data
+  static ElevatedButtonThemeData getGradientElevatedButtonTheme(
+          {required bool isLightTheme}) =>
+      ElevatedButtonThemeData(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.r),
+            ),
+          ),
+          elevation: MaterialStateProperty.all(0),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              EdgeInsets.symmetric(vertical: 8.h)),
+          textStyle: getElevatedButtonTextStyle(isLightTheme),
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+          shadowColor: MaterialStateProperty.all(Colors.transparent),
         ),
       );
 }
