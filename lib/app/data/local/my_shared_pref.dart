@@ -13,12 +13,26 @@ class MySharedPref {
   static const String _fcmTokenKey = 'fcm_token';
   static const String _currentLocalKey = 'current_local';
   static const String _lightThemeKey = 'is_theme_light';
+  static const String _loginUIDKey = 'uid';
+  static const String _keyUserEmail = 'email';
 
   /// init get storage services
   static init() async {
     await GetStorage.init();
     _storage = GetStorage();
   }
+
+  ///UID
+  static Future setUID(String uid) async =>
+      await _storage.write(_loginUIDKey, uid);
+  static Future<String?> getUID() async => await _storage.read(_loginUIDKey);
+  static Future<String?> removeUID() async =>
+      await _storage.remove(_loginUIDKey);
+
+  //Email
+  static setEmail(String email) => _storage.write(_keyUserEmail, email);
+  static getEmail() => _storage.read(_keyUserEmail);
+  static removeEmail() => _storage.remove(_keyUserEmail);
 
   /// set theme current type as light theme
   static void setThemeIsLight(bool lightTheme) =>

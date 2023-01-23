@@ -16,6 +16,7 @@ Future<void> main() async {
 
   // init shared preference
   await MySharedPref.init();
+  var uid = await MySharedPref.getUID();
 
   runApp(
     ScreenUtilInit(
@@ -42,8 +43,9 @@ Future<void> main() async {
               ),
             );
           },
-          initialRoute:
-              AppPages.INITIAL, // first screen to show when app is running
+          initialRoute: uid != null
+              ? AppPages.NAV
+              : AppPages.LOGIN, // first screen to show when app is running
           getPages: AppPages.routes, // app screens
           locale: MySharedPref.getCurrentLocal(), // app language
           translations:

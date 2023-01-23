@@ -1,5 +1,7 @@
+import 'package:galaxy/app/components/navbar/bottom_navbar.dart';
 import 'package:get/get.dart';
 
+import '../components/navbar/navbar_binding.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/login_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -12,8 +14,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
-  static const HOME = Routes.HOME;
+  static const LOGIN = Routes.LOGIN;
+  static const NAV = Routes.NAV;
 
   static final routes = [
     GetPage(
@@ -22,8 +24,13 @@ class AppPages {
       binding: AuthBinding(),
     ),
     GetPage(
+      name: _Paths.NAV,
+      page: () => BottomNavbar(),
+      binding: NavbarBinding(),
+    ),
+    GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
   ];

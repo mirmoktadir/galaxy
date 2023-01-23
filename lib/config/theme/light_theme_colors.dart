@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class LightThemeColors {
   //dark swatch
-  static const Color primaryColor = Color(0xFF40A76A);
+  // static const Color primaryColor = Color(0xFF40A76A);
+  static Color primaryColor = Colors.lightGreen.shade400;
   static const Color accentColor = Color(0xFFD9EDE1);
 
   //APPBAR
-  static const Color appBarColor = primaryColor;
+  static Color appBarColor = primaryColor;
 
   //SCAFFOLD
-  static const Color scaffoldBackgroundColor = Colors.white;
+  static Color scaffoldBackgroundColor = Colors.white;
+
   static const Color backgroundColor = Colors.white;
   static const Color dividerColor = Color(0xff686868);
   static const Color cardColor = Color(0xfffafafa);
@@ -19,7 +21,7 @@ class LightThemeColors {
   static const Color iconColor = Colors.black;
 
   //BUTTON
-  static const Color buttonColor = primaryColor;
+  static Color buttonColor = primaryColor;
   static const Color buttonTextColor = Colors.white;
   static const Color buttonDisabledColor = Colors.grey;
   static const Color buttonDisabledTextColor = Colors.black;
@@ -31,7 +33,7 @@ class LightThemeColors {
   static const Color hintTextColor = Color(0xff686868);
 
   //chip
-  static const Color chipBackground = primaryColor;
+  static Color chipBackground = primaryColor;
   static const Color chipTextColor = Colors.white;
 
   // progress bar indicator

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
 import '../controllers/auth_controller.dart';
 
 class LoginView extends GetView<AuthController> {
@@ -16,7 +14,6 @@ class LoginView extends GetView<AuthController> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: Form(
@@ -114,13 +111,13 @@ class LoginView extends GetView<AuthController> {
                         SizedBox(height: 25.h),
                         TextFormField(
                           controller: passwordController,
-                          obscureText: true,
+                          // obscureText: true,
                           onSaved: (value) {
                             passwordController.text = value!;
                           },
                           validator: (value) {
                             if (passwordController.text.isEmpty) {
-                              return "Enter your password!";
+                              return "Password is required!";
                             }
                             return controller.validatePassword(value!);
                           },
@@ -177,7 +174,7 @@ class LoginView extends GetView<AuthController> {
                         SizedBox(height: 40.h),
                         SizedBox(
                           width: double.infinity,
-                          height: 55.h,
+                          height: 58.h,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(colors: [
