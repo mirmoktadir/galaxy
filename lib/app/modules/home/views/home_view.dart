@@ -19,8 +19,12 @@ class HomeView extends GetView<HomeController> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Galaxy'),
+          title: Text(
+            'Galaxy',
+            style: TextStyle(color: theme.primaryColor),
+          ),
           centerTitle: true,
+          backgroundColor: Colors.transparent,
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
