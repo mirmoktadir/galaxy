@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -91,27 +92,32 @@ class HomeView extends GetView<HomeController> {
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: controller.imgList.length,
+            itemCount: controller.products.length,
             itemBuilder: (context, index) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.r),
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image:
-                            NetworkImage(controller.imgList[index].toString()),
-                      ),
-                      color: Colors.white,
-                      border: Border.all(
-                        width: 1,
-                        color: theme.primaryColor.withOpacity(.3),
-                      ),
-                    ),
+                  CachedNetworkImage(
                     height: 140.h,
                     width: 125.w,
+                    imageUrl: controller.products[index].image.toString(),
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.r),
+                        border: Border.all(
+                          width: 1,
+                          color: theme.primaryColor.withOpacity(.3),
+                        ),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                   const SizedBox(height: 5),
                   Text(
