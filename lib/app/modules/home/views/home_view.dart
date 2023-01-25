@@ -35,7 +35,7 @@ class HomeView extends GetView<HomeController> {
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    SizedBox(height: 78.h),
+                    SizedBox(height: 60.h),
                     _carouselSlider(context, theme),
                     _itemList(theme, "Top Products", () {}),
                     const SizedBox(height: 5),
@@ -51,112 +51,15 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _itemList(ThemeData theme, String title, VoidCallback function) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: MyFonts.headline6TextSize,
-                color: theme.primaryColor,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
-                minimumSize: const Size(120, 40),
-                alignment: Alignment.centerRight,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              onPressed: function,
-              child: Text(
-                "View All >",
-                style: TextStyle(
-                  fontSize: MyFonts.headline6TextSize,
-                  color: theme.primaryColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 5),
-        SizedBox(
-          height: 200.h,
-          width: double.infinity,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: controller.products.length,
-            itemBuilder: (context, index) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CachedNetworkImage(
-                    height: 140.h,
-                    width: 125.w,
-                    imageUrl: controller.products[index].image.toString(),
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.r),
-                        border: Border.all(
-                          width: 1,
-                          color: theme.primaryColor.withOpacity(.3),
-                        ),
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    "Item 1",
-                    style: TextStyle(
-                      fontSize: MyFonts.headline6TextSize,
-                      // color: theme.primaryColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Text(
-                    "\$ 120.00",
-                    style: TextStyle(
-                      fontSize: MyFonts.body1TextSize,
-                      color: Colors.black45,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              );
-            },
-            separatorBuilder: (context, _) {
-              return const SizedBox(width: 10);
-            },
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _searchbar(ThemeData theme) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(bottom: 25.h),
+      padding: EdgeInsets.only(bottom: 15.h),
       child: Row(
         children: [
           Expanded(
             child: SizedBox(
-              height: 58.h,
+              height: 45.h,
               child: Center(
                 child: TextFormField(
                   controller: searchController,
@@ -167,10 +70,13 @@ class HomeView extends GetView<HomeController> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.search,
                   cursorColor: theme.primaryColor,
+                  style: TextStyle(
+                    color: theme.primaryColor,
+                  ),
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.only(
-                      top: 20,
-                      bottom: 20,
+                      top: 10,
+                      bottom: 10,
                       left: 15,
                     ),
                     hintText: "Search anything",
@@ -214,13 +120,13 @@ class HomeView extends GetView<HomeController> {
           ),
           const SizedBox(width: 5),
           SizedBox(
-            height: 58.h,
-            width: 58.w,
+            height: 45.h,
+            width: 45.w,
             child: ElevatedButton(
               onPressed: () {},
-              child: const Icon(
+              child: Icon(
                 IconlyLight.search,
-                // size: 24,
+                size: 20.sp,
               ),
             ),
           ),
@@ -290,6 +196,116 @@ class HomeView extends GetView<HomeController> {
               ),
             );
           }).toList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _itemList(ThemeData theme, String title, VoidCallback function) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: MyFonts.headline6TextSize,
+                color: theme.primaryColor,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: const Size(120, 40),
+                alignment: Alignment.centerRight,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              onPressed: function,
+              child: Text(
+                "View All >",
+                style: TextStyle(
+                  fontSize: MyFonts.headline6TextSize,
+                  color: theme.primaryColor,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        SizedBox(
+          height: 200.h,
+          width: double.infinity,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: controller.products.length,
+            itemBuilder: (context, index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 140.h,
+                    width: 125.w,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      border: Border.all(
+                        width: 1,
+                        color: theme.primaryColor.withOpacity(.3),
+                      ),
+                    ),
+                    child: CachedNetworkImage(
+                      height: 130.h,
+                      width: 120.w,
+                      imageUrl: controller.products[index].image.toString(),
+                      imageBuilder: (context, imageProvider) => Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.r),
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  SizedBox(
+                    width: 120.w,
+                    child: Text(
+                      controller.products[index].title.toString(),
+                      style: TextStyle(
+                        fontSize: MyFonts.body1TextSize,
+                        // color: theme.primaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Text(
+                    "\$ ${controller.products[index].price.toString()}",
+                    style: TextStyle(
+                      fontSize: MyFonts.body1TextSize,
+                      color: Colors.black45,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              );
+            },
+            separatorBuilder: (context, _) {
+              return const SizedBox(width: 10);
+            },
+          ),
         ),
       ],
     );

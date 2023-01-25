@@ -1,6 +1,5 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:flutter/material.dart';
+import 'package:galaxy/app/modules/auth/controllers/auth_controller.dart';
 import 'package:galaxy/app/modules/home/views/home_view.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -11,7 +10,7 @@ import 'mir_custome_painter.dart';
 //ignore: must_be_immutable
 class BottomNavbar extends GetView {
   BottomNavbar({Key? key}) : super(key: key);
-
+  final authController = Get.put(AuthController());
   List navigation = [
     HomeView(),
     // const Page2View(),
@@ -23,7 +22,7 @@ class BottomNavbar extends GetView {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    void _onTap(int index) {
+    void onTap(int index) {
       _selectedIndex = index;
 
       (context as Element).markNeedsBuild();
@@ -34,10 +33,9 @@ class BottomNavbar extends GetView {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 15),
         child: FloatingActionButton(
-          onPressed: () {
-            if (kDebugMode) {
-              print('hello');
-            }
+          onPressed: () async {
+            // test
+            await authController.doLogout();
           },
           backgroundColor: theme.primaryColor,
           elevation: 5,
@@ -67,7 +65,7 @@ class BottomNavbar extends GetView {
                   minWidth: 50,
                   splashColor: theme.primaryColor.withOpacity(.4),
                   onPressed: () {
-                    _onTap(0);
+                    onTap(0);
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -100,7 +98,7 @@ class BottomNavbar extends GetView {
                   minWidth: 50,
                   splashColor: theme.primaryColor.withOpacity(.4),
                   onPressed: () {
-                    _onTap(1);
+                    onTap(1);
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +132,7 @@ class BottomNavbar extends GetView {
                   minWidth: 50,
                   splashColor: theme.primaryColor.withOpacity(.4),
                   onPressed: () {
-                    _onTap(2);
+                    onTap(2);
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +164,7 @@ class BottomNavbar extends GetView {
                   minWidth: 50,
                   splashColor: theme.primaryColor.withOpacity(.4),
                   onPressed: () {
-                    _onTap(3);
+                    onTap(3);
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
